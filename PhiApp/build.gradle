@@ -1,12 +1,29 @@
-apply plugin: 'com.android.application'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.0.0'
+    }
+}
+
+apply plugin: 'android'
 
 android {
-    compileSdkVersion 'android-L'
+    compileSdkVersion 20
     buildToolsVersion "20.0.0"
+
+    packagingOptions {
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
 
     defaultConfig {
         applicationId "kumc.app"
-        minSdkVersion 19
+        minSdkVersion 14
         targetSdkVersion 20
         versionCode 1
         versionName "1.0"
@@ -18,12 +35,30 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
+            //runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/release"}
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'joda-time:joda-time:2.3'
+    compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.3'
+    compile 'com.android.support:support-v13:21.0.+' // 4, 7, 13 17
+    //compile 'org.springframework.social:spring-social-core:1.1.0.RELEASE'
+
 }
+
+/*
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.12'
+}
+*/
+

@@ -1,6 +1,5 @@
 package kumc.app.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,11 +8,11 @@ import android.view.ViewGroup;
 import kumc.app.phi.R;
 
 /**
- * A placeholder fragment containing a simple view.
+ * 진료과 프레그먼트
  */
-public class PlaceholderFragment extends Fragment {
+public class MedicalPartFragment extends BaseFragment {
 
-    public PlaceholderFragment() {
+    public MedicalPartFragment() {
     }
 
     @Override
